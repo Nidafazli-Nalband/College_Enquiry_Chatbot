@@ -1,0 +1,97 @@
+/* WRAPPER */
+.admissions-wrapper {
+  padding: 4rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* MAIN SECTION CONTAINER */
+.admissions-section {
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+/* TITLE */
+.page-title {
+  font-size: 2.6rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+/* SUB HEADINGS */
+.admissions-section h3 {
+  text-align: left;
+  font-size: 1.7rem;
+  margin-top: 10px;
+  color: #222;
+}
+
+/* CARD / BOX STYLE */
+.admissions-card {
+  padding: 28px;
+  border-radius: 22px;
+
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(12px);
+
+  /* SHADOW */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+
+  /* TEXT */
+  font-size: 1.15rem;
+  line-height: 1.65;
+  text-align: left;
+
+  /* TRANSITION */
+  transition: all 0.35s ease;
+}
+
+/* HOVER ANIMATION */
+.admissions-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 38px rgba(0,0,0,0.18);
+}
+
+/* CTA BUTTON AREA */
+.cta {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.apply-btn {
+  padding: 1rem 2rem;
+  border-radius: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--pastel-start), var(--pastel-end));
+  font-size: 1.15rem;
+}
+
+/* CTA Hover Animation */
+.apply-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+  letter-spacing: 0.5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .admissions-wrapper {
+    padding: 2rem 1rem;
+  }
+  .admissions-card {
+    font-size: 1rem;
+    padding: 22px;
+  }
+  .page-title {
+    font-size: 2.2rem;
+  }
+  .admissions-section h3 {
+    font-size: 1.5rem;
+  }
+}

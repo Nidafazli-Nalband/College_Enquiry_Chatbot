@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: rgb(212,242,248); /* changed to requested color */
+    color: #111;
+  }
+
+  .sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #f8f9fb; /* ultra-light grey */
+    color: #2d3748;
+    position: fixed;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+  }
+
+  .menu-btn {
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: #f8f9fb;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    text-align: left;
+  }
+  .menu-btn:hover, .menu-btn.active {
+    background: #edf2f7;
+    color: #1a202c;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-color: #cbd5e1;
+  }
+
+  .content {
+    margin-left: 280px;
+    padding: 30px;
+    background: rgb(212,242,248); /* was white, changed to requested color */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    animation: fade 0.4s ease-in-out;
+    color: #111;
+  }
+  .section {
+    background: rgb(212,242,248);
+    color: #111;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 24px;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .card:hover {
+    transform: scale(1.06);
+    background: linear-gradient(135deg, #2563eb, #0891b2);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: transparent;
+    border-radius: 10px;
+    color: #111;
+  }
+
+  th, td {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px;
+    text-align: left;
+    color: #111;
+  }
+
+  th {
+    background: #f3f4f6;
+    color: #111;
+  }
+
+  .btn {
+    background: #3b82f6;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #2563eb;
+  }
+
+  /* Delete button variant */
+  .btn-delete {
+    background: #ef4444;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .btn-delete:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(239,68,68,0.18); background:#ef3737 }
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">⚙️ Admin Panel</div>
+  <div class="menu-btn" id="btn-dashboard" onclick="showSection('dashboard')">📊 Dashboard</div>
+  <div class="menu-btn" id="btn-queries" onclick="showSection('queries')">❓ Unanswered Queries</div>
+  <div class="menu-btn" id="btn-students" onclick="showSection('students')">🧑‍🎓 Student Logs</div>
+  <div class="menu-btn" id="btn-actions" onclick="showSection('actions')">🛠 CRUD Operations</div>
+</div>
+
+<div class="content">
+  <div class="greeting-container" style="background:#fff; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom:48px; padding:32px 0;">
+    <h2 id="admin-greeting" style="font-size:2.5rem; text-align:center; font-weight:700; margin:0;">Hello Admin Nida Fazli 👋</h2>
+  </div>
+  <div id="dashboard" class="section" style="margin-top:32px;">
+    <div class="grid">
+        <div id="card-total" class="card" style="cursor:pointer;">📩 Total Queries: <span id="total-queries">0</span></div>
+        <div id="card-unanswered" class="card" style="cursor:pointer;">❓ Unanswered: <span id="unanswered">0</span></div>
+        <div id="card-registered" class="card" style="cursor:pointer;">🧑‍🎓 Registered Students: <span id="registered-students">0</span></div>
+        <div class="card">⚙️ System Status: Active</div>
+    </div>
+  </div>
+
+  <div id="queries" class="section" style="display:none;">
+    <h2>❓ Unanswered Queries <small id="queries-unanswered" style="font-size:0.8rem; color:#6b7280; margin-left:8px;">0</small></h2>
+    <table id="unanswered-table">
+      <tr><th>Student</th><th>Query</th><th>Timestamp</th><th>Action</th></tr>
+    </table>
+  </div>
+
+  <div id="students" class="section" style="display:none;">
+    <h2>🧑‍🎓 Student Logs</h2>
+    <div id="students-table-container">
+      <table id="registered-students-table">
+        <thead>
+          <tr><th>Name</th><th>Email</th><th>Date Registered</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="actions" class="section" style="display:none;">
+    <h2>Insert / Update / Delete</h2>
+    <div class="grid">
+      <div class="card" onclick="showCrudForm('insert')">➕ Insert Data</div>
+      <div class="card" onclick="showCrudForm('update')">✏️ Update Data</div>
+      <div class="card" onclick="showCrudForm('delete')">🗑 Delete Data</div>
+    </div>
+    <div id="crud-form" style="display:none; margin-top:20px;">
+      <form id="crud-form-element">
+        <label>Table: <select id="crud-table" required>
+          <option value="general_info">General Info</option>
+          <option value="courses">Courses</option>
+          <option value="faculty">Faculty</option>
+          <option value="fee_structure">Fee Structure</option>
+          <option value="timetable">Timetable</option>
+        </select></label><br><br>
+        <div id="crud-fields"></div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <div id="crud-result"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Helper to build fetch headers including session token
+function getHeaders(isJson=true) {
+  const token = localStorage.getItem('mmec_token');
+  const headers = {};
+  if (token) headers['X-Session-Token'] = token;
+  if (isJson) {
+    headers['Content-Type'] = 'application/json';
+    headers['Accept'] = 'application/json';
+  } else {
+    headers['Accept'] = 'application/json';
+  }
+  return headers;
+}
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(sec => sec.style.display='none');
+  document.getElementById(id).style.display='block';
+  // Remove active from all menu buttons
+  document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+  // Add active to the selected button
+  if(id==='dashboard') document.getElementById('btn-dashboard').classList.add('active');
+  if(id==='queries') document.getElementById('btn-queries').classList.add('active');
+  if(id==='students') document.getElementById('btn-students').classList.add('active');
+  if(id==='actions') document.getElementById('btn-actions').classList.add('active');
+  if (id === 'dashboard') {
+    loadDashboardStats();
+  } else if (id === 'queries') {
+    loadUnansweredQueries();
+  } else if (id === 'students') {
+    loadRegisteredStudents();
+  }
+}
+
+// Parse timestamp strings returned by SQLite ("YYYY-MM-DD HH:MM:SS" in UTC)
+function parseDbTs(ts) {
+  if (!ts) return null;
+  try {
+    // If already ISO-like, let Date handle it
+    if (/\d{4}-\d{2}-\d{2}T/.test(ts) || /Z$/.test(ts)) return new Date(ts);
+    // Common SQLite default format: "YYYY-MM-DD HH:MM:SS" (UTC)
+    // Convert to ISO UTC by replacing space with 'T' and appending 'Z'
+    const iso = ts.replace(' ', 'T') + (ts.endsWith('Z') ? '' : 'Z');
+    return new Date(iso);
+  } catch (e) {
+    return new Date(ts);
+  }
+}
+
+async function loadDashboardStats() {
+  try {
+    const token = localStorage.getItem('mmec_token');
+    // Load students count
+    const studentsRes = await fetch('/api/admin/students', { headers: getHeaders(false) });
+    let studentsData = null;
+    try {
+      studentsData = await studentsRes.json();
+    } catch(e) { console.error('students parse', e); studentsData = null; }
+    if (studentsData && studentsData.ok) {
+      document.getElementById('registered-students').textContent = studentsData.students.length;
+    }
+    
+    // Load unanswered queries ONLY from /api/admin/unanswered (the source of truth)
+    try {
+      const uaRes = await fetch('/api/admin/unanswered', { headers: getHeaders(false) });
+      let uaJson = null;
+      try { uaJson = await uaRes.json(); } catch(e) { console.error('unanswered parse', e); uaJson = null }
+      
+      if (uaJson && uaJson.ok && Array.isArray(uaJson.unanswered)) {
+        const uaCount = uaJson.unanswered.length;
+        document.getElementById('unanswered').textContent = uaCount;
+        const qEl = document.getElementById('queries-unanswered');
+        if (qEl) qEl.textContent = uaCount;
+      } else {
+        // If admin API failed (unauthorized or error), fallback to computing unmatched logs
+        try {
+          const logsRes2 = await fetch('/api/logs', { headers: getHeaders(false) });
+          const logsText2 = await logsRes2.text();
+          let logsData2 = null; try { logsData2 = JSON.parse(logsText2); } catch(e){ logsData2 = null }
+          // load offline faq from static file
+          let faqList2 = [];
+          try {
+            const fq2 = await fetch('/data/college_info/offline_faq.json');
+            const fqj2 = await fq2.json();
+            if (fqj2 && Array.isArray(fqj2.faqs)) faqList2 = fqj2.faqs;
+          } catch(e) { /* ignore */ }
+          const faqKeywords2 = [];
+          faqList2.forEach(f => {
+            if (Array.isArray(f.keywords)) f.keywords.forEach(k => faqKeywords2.push(String(k).toLowerCase()));
+            if (f.keyword) faqKeywords2.push(String(f.keyword).toLowerCase());
+          });
+          const unmatched2 = [];
+          if (logsData2 && Array.isArray(logsData2.logs)) {
+            logsData2.logs.forEach(l => {
+              const userMsg = (l.user_msg || '').toString().toLowerCase();
+              if (l.answered_by) return;
+              if (!userMsg || !userMsg.trim()) return;
+              const matched = faqKeywords2.some(k => k && userMsg.indexOf(k) !== -1);
+              if (!matched) unmatched2.push(l);
+            });
+          }
+          document.getElementById('unanswered').textContent = String(unmatched2.length || 0);
+          const qEl2 = document.getElementById('queries-unanswered'); if (qEl2) qEl2.textContent = String(unmatched2.length || 0);
+        } catch(e) {
+          console.error('failed fallback unanswered compute', e);
+          document.getElementById('unanswered').textContent = '0';
+        }
+      }
+    } catch (e) {
+      console.error('Error loading admin unanswered for dashboard', e);
+      document.getElementById('unanswered').textContent = '0';
+    }
+    
+    // Load logs for total queries count (accurate total)
+    const logsRes = await fetch('/api/logs', { headers: getHeaders(false) });
+    const logsText = await logsRes.text();
+    let logsData = null;
+    try { logsData = JSON.parse(logsText); } catch(e) { console.error('Logs parse error', e, logsText); }
+    
+    if (logsData && logsData.logs) {
+      let totalQueries = logsData.logs.length;
+      document.getElementById('total-queries').textContent = totalQueries;
+    }
+  } catch (e) {
+    console.error('Error loading stats', e);
+  }
+}
+
+let unansweredPollInterval = null;
+async function loadUnansweredQueries() {
+  try {
+    // card click handlers exist globally; they will call the appropriate loaders
+
+    // Use admin API to load unanswered queries (persisted in DB)
+    try {
+      // First try the admin API for unanswered entries
+      const res = await fetch('/api/admin/unanswered', { headers: getHeaders(false) });
+      let j = null;
+      try { j = await res.json(); } catch(e) { console.error('unanswered parse', e); j = null }
+      const table = document.getElementById('unanswered-table');
+      while (table.rows.length > 1) table.deleteRow(1);
+
+      if (j && j.ok && Array.isArray(j.unanswered) && j.unanswered.length) {
+        // Use server-provided unanswered list
+        j.unanswered.forEach(q => {
+          const row = table.insertRow();
+          row.insertCell(0).textContent = q.user || q.answered_by || 'Student';
+          row.insertCell(1).textContent = q.question || q.user_msg || '';
+          try {
+            const d = q.ts ? parseDbTs(q.ts) : null;
+            row.insertCell(2).textContent = d ? d.toLocaleString() : '';
+          } catch (e) { row.insertCell(2).textContent = q.ts || ''; }
+          const actionCell = row.insertCell(3);
+          // Removed Answer button per request — admins can answer from the Unanswered detail view if needed.
+          const delBtn = document.createElement('button'); delBtn.className = 'btn'; delBtn.style.background = '#ef4444'; delBtn.textContent = 'Remove';
+          delBtn.onclick = async () => {
+            if (!confirm('Remove this unanswered query from the queue?')) return;
+            try {
+              const r = await fetch('/api/admin/answer_unanswered', { method: 'POST', headers: getHeaders(true), body: JSON.stringify({ id: q.id, answer: '' }) });
+              let jr = null; try { jr = await r.json(); } catch(e) { jr = null }
+              if (jr && jr.ok) {
+                // Remove the row from the table immediately for a snappy UI
+                try { row.parentNode && row.parentNode.removeChild(row); } catch(e){}
+                // Update visible counts (cards and header) without forcing a full reload
+                try {
+                  const qEl = document.getElementById('queries-unanswered'); if (qEl) qEl.textContent = Math.max(0, (parseInt(qEl.textContent||'0') - 1));
+                  const uaEl = document.getElementById('unanswered'); if (uaEl) uaEl.textContent = Math.max(0, (parseInt(uaEl.textContent||'0') - 1));
+                } catch(e){}
+                // refresh dashboard stats in background to keep everything consistent
+                loadDashboardStats();
+              } else alert('Remove failed: '+(jr && jr.error? jr.error : 'unknown'));
+            } catch (e) { alert('Error: '+e.message) }
+          };
+          actionCell.appendChild(delBtn);
+        });
+        // update count
+        try { const qEl = document.getElementById('queries-unanswered'); if (qEl) qEl.textContent = j.unanswered.length; } catch(e) {}
+        try { const statusEl = document.getElementById('api-status'); if (statusEl) statusEl.textContent = '/api/admin/unanswered -> OK ('+j.unanswered.length+')'; } catch(e){}
+      } else {
+        // Fallback: fetch full logs and offline faq, then show logs not matched by offline_faq
+          try {
+          const logsRes = await fetch('/api/logs', { headers: getHeaders(false) });
+          const logsText = await logsRes.text();
+          let logsData = null; try { logsData = JSON.parse(logsText); } catch(e){ logsData = null }
+          // load offline faq from static file
+          let faqList = [];
+          try {
+            const fq = await fetch('/data/college_info/offline_faq.json');
+            const fqj = await fq.json();
+            if (fqj && Array.isArray(fqj.faqs)) faqList = fqj.faqs;
+          } catch(e) { /* ignore */ }
+
+          const faqKeywords = [];
+          faqList.forEach(f => {
+            if (Array.isArray(f.keywords)) f.keywords.forEach(k => faqKeywords.push(String(k).toLowerCase()));
+            if (f.keyword) faqKeywords.push(String(f.keyword).toLowerCase());
+          });
+
+          const unmatched = [];
+          if (logsData && Array.isArray(logsData.logs)) {
+            logsData.logs.forEach(l => {
+              const userMsg = (l.user_msg || '').toString().toLowerCase();
+              // skip already answered
+              if (l.answered_by) return;
+              if (!userMsg || !userMsg.trim()) return;
+              // if any faq keyword is substring of userMsg, consider it matched
+              const matched = faqKeywords.some(k => k && userMsg.indexOf(k) !== -1);
+              if (!matched) unmatched.push(l);
+            });
+          }
+
+          // populate table with unmatched entries
+          unmatched.forEach(q => {
+            const row = table.insertRow();
+            row.insertCell(0).textContent = q.user || q.user_email || 'Student';
+            row.insertCell(1).textContent = q.user_msg || q.question || '';
+            try {
+              const d2 = q.ts ? parseDbTs(q.ts) : null;
+              row.insertCell(2).textContent = d2 ? d2.toLocaleString() : '';
+            } catch (e) { row.insertCell(2).textContent = q.ts || ''; }
+            const actionCell = row.insertCell(3);
+            // Answer button removed in fallback mode as well
+            const delBtn = document.createElement('button'); delBtn.className = 'btn'; delBtn.style.background = '#ef4444'; delBtn.textContent = 'Remove';
+              delBtn.onclick = async () => { await adminDeleteLog(q.ts); };
+            actionCell.appendChild(delBtn);
+          });
+          // update header count
+          try { const qEl = document.getElementById('queries-unanswered'); if (qEl) qEl.textContent = unmatched.length; } catch(e) {}
+          try { const statusEl = document.getElementById('api-status'); if (statusEl) statusEl.textContent = '/api/logs fallback -> OK ('+unmatched.length+')'; } catch(e){}
+        } catch(e) { console.error('Fallback unmatched load error', e); }
+      }
+      // start polling for real-time updates if not already
+      if (!unansweredPollInterval) unansweredPollInterval = setInterval(() => { loadUnansweredQueries(); loadDashboardStats(); }, 10000);
+    } catch (e) { console.error('Error loading unanswered via admin API', e); }
+  } catch (e) {
+    console.error('Error loading unanswered queries', e);
+  }
+}
+
+// Load full queries list (for card click)
+async function loadAllQueries() {
+  const token = localStorage.getItem('mmec_token');
+  try {
+    const res = await fetch('/api/logs', { headers: getHeaders(false) });
+    const text = await res.text();
+    let data = null; try { data = JSON.parse(text); } catch(e) { document.getElementById('unanswered-table').insertRow().innerHTML='<td colspan=4>Unable to load logs</td>'; return; }
+    if (data.logs) {
+      // reuse unanswered table area to show full logs
+      const table = document.getElementById('unanswered-table');
+      while (table.rows.length > 1) table.deleteRow(1);
+      data.logs.forEach(log => {
+        const row = table.insertRow();
+        row.insertCell(0).textContent = log.user || 'Unknown';
+        row.insertCell(1).textContent = log.user_msg || '';
+        try {
+          const dlog = log.ts ? parseDbTs(log.ts) : null;
+          row.insertCell(2).textContent = dlog ? dlog.toLocaleString() : (log.ts || '');
+        } catch (e) { row.insertCell(2).textContent = log.ts || ''; }
+        const cell = row.insertCell(3);
+        cell.textContent = log.bot_msg || '';
+      });
+      showSection('queries');
+    }
+  } catch (e) { console.error(e); }
+}
+
+// Load registered students and show details
+async function loadRegisteredStudents() {
+  const token = localStorage.getItem('mmec_token');
+  try {
+    const res = await fetch('/api/admin/students', { headers: getHeaders(false) });
+const text = await res.text();
+let j = null; try { j = JSON.parse(text); } catch(e) { document.getElementById('students-table-container').textContent='Unable to parse response'; return; }
+const container = document.getElementById('students-table-container');
+const tbody = document.querySelector('#registered-students-table tbody');
+if (tbody) tbody.innerHTML = '';
+
+    const addRow = (name, email, dateStr) => {
+      const tr = document.createElement('tr');
+      tr.insertCell().textContent = name || '';
+      tr.insertCell().textContent = email || '';
+      tr.insertCell().textContent = dateStr || '';
+      if (tbody) tbody.appendChild(tr);
+    };
+
+    if (j && j.ok && Array.isArray(j.students)) {
+      // Update dashboard counter to match the loaded students list
+      try { document.getElementById('registered-students').textContent = String(j.students.length || 0); } catch(e) {}
+      j.students.forEach(s => {
+        const name = s.name || '';
+        const email = s.email || '';
+        const dateRaw = s.registered || s.registered_at || s.time || s.created || s.created_at || s.registered_date || '';
+        let dateStr = '';
+        try { if (dateRaw) { const d = parseDbTs(dateRaw); dateStr = d ? d.toLocaleDateString() : String(dateRaw); } } catch(e) { dateStr = dateRaw; }
+        addRow(name, email, dateStr);
+      });
+      showSection('students');
+      return;
+    }
+
+    // If server returned no students or an error, show an informative error instead of a static sample
+    try {
+      const container = document.getElementById('students-table-container');
+      container.innerHTML = '<div style="padding:20px; color:#b91c1c; background:#fff5f5; border-radius:8px;">Unable to load students from server. Check token/authorization or server status. See console for details.</div>';
+      console.error('loadRegisteredStudents: server returned no students or error', j);
+      // Also update debug banner with last error
+      const dbg = document.getElementById('admin-debug'); if (dbg) dbg.textContent = `Token: ${localStorage.getItem('mmec_token') || '(no token)'} — students load error`;
+      return;
+    } catch (e) { console.error('error showing students error message', e); }
+  } catch(e){ console.error(e); }
+}
+
+async function adminReply(ts) {
+  const reply = prompt('Enter reply for this query:');
+  if (!reply) return;
+  const token = localStorage.getItem('mmec_token');
+  try {
+    const res = await fetch('/api/admin/reply', {
+      method: 'POST',
+      headers: getHeaders(true),
+      body: JSON.stringify({ ts, reply })
+    });
+    const j = await res.json();
+    if (j.ok) {
+      alert('Reply saved');
+      loadUnansweredQueries();
+      loadDashboardStats();
+    } else alert('Error: ' + (j.error||'unknown'))
+  } catch (e) { alert('Error: ' + e.message) }
+}
+
+async function adminDeleteLog(ts) {
+  if (!confirm('Delete this log entry?')) return;
+  const token = localStorage.getItem('mmec_token');
+  try {
+    const res = await fetch('/api/admin/delete_log', {
+      method: 'POST',
+      headers: getHeaders(true),
+      body: JSON.stringify({ ts })
+    });
+    const j = await res.json();
+    if (j.ok) {
+      alert('Deleted');
+      loadUnansweredQueries();
+      loadDashboardStats();
+    } else alert('Error: ' + (j.error||'unknown'))
+  } catch (e) { alert('Error: ' + e.message) }
+}
+
+// CRUD Functions
+function showCrudForm(action) {
+  const form = document.getElementById('crud-form');
+  form.style.display = 'block';
+  const fields = document.getElementById('crud-fields');
+  fields.innerHTML = '';
+  const tableSelect = document.getElementById('crud-table');
+  tableSelect.value = 'general_info'; // default
+  updateCrudFields(action);
+  tableSelect.addEventListener('change', () => updateCrudFields(action));
+}
+
+function updateCrudFields(action) {
+  const table = document.getElementById('crud-table').value;
+  const fields = document.getElementById('crud-fields');
+  fields.innerHTML = '';
+  const fieldDefs = {
+    general_info: ['key', 'value'],
+    courses: ['course_code', 'course_name', 'details'],
+    faculty: ['faculty_id', 'name', 'department', 'details'],
+    fee_structure: ['course_type', 'amount', 'details'],
+    timetable: ['day', 'time_slot', 'course_id', 'faculty_id', 'room']
+  };
+  const defs = fieldDefs[table] || [];
+  // First, load existing data if updating or deleting
+  if (action === 'update' || action === 'delete') {
+    loadExistingData(table, defs);
+  }
+  defs.forEach(field => {
+    const label = document.createElement('label');
+    label.textContent = field.replace('_', ' ').toUpperCase() + ': ';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = field;
+    input.required = true;
+    label.appendChild(input);
+    fields.appendChild(label);
+    fields.appendChild(document.createElement('br'));
+    fields.appendChild(document.createElement('br'));
+  });
+  const form = document.getElementById('crud-form-element');
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    // Build payload with nested 'data' object to match server expectations
+    const payload = { table, action, data: {} };
+    defs.forEach(field => {
+      payload.data[field] = form[field].value;
+    });
+    const token = localStorage.getItem('mmec_token');
+    try {
+      const res = await fetch('/api/admin/data', {
+        method: 'POST',
+        headers: getHeaders(true),
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json();
+      document.getElementById('crud-result').textContent = j.ok ? (j.message || 'Success') : 'Error: ' + (j.error || 'Unknown');
+      if (j.ok) {
+        // refresh dashboard or lists
+        loadDashboardStats();
+      }
+    } catch (err) {
+      document.getElementById('crud-result').textContent = 'Error: ' + err.message;
+    }
+  };
+}
+
+async function loadExistingData(table, defs) {
+  const token = localStorage.getItem('mmec_token');
+    try {
+    const res = await fetch('/api/admin/data', {
+      method: 'POST',
+      headers: getHeaders(true),
+      body: JSON.stringify({ table, action: 'read' })
+    });
+    const j = await res.json();
+    if (j.ok && j.data) {
+      // For simplicity, show first record or list them
+      const dataDiv = document.createElement('div');
+      dataDiv.innerHTML = '<h3>Existing Data:</h3>';
+      j.data.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = JSON.stringify(item);
+        dataDiv.appendChild(itemDiv);
+      });
+      document.getElementById('crud-fields').appendChild(dataDiv);
+    }
+  } catch (e) {
+    console.error('Error loading existing data', e);
+  }
+}
+
+// Load stats on page load
+document.addEventListener('DOMContentLoaded', () => {
+  showSection('dashboard');
+  try{
+    // If token is provided in the URL (admin redirected with ?token=...), persist it to localStorage
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const urlTok = params.get('token');
+      const urlName = params.get('name') || params.get('user');
+      if (urlTok) {
+        localStorage.setItem('mmec_token', urlTok);
+      }
+      if (urlName) {
+        localStorage.setItem('mmec_name', urlName);
+        localStorage.setItem('mmec_user', urlName);
+      }
+    } catch(e) { /* ignore URL parsing errors */ }
+
+    const name = localStorage.getItem('mmec_name') || localStorage.getItem('mmec_user') || '';
+    const el = document.getElementById('admin-greeting');
+    if (el) el.textContent = name ? `Hello  ${name} 👋` : 'Hello Admin 👋';
+    // show debug info token
+    try{
+      const dbg = document.getElementById('admin-debug');
+      if (dbg) {
+        const t = localStorage.getItem('mmec_token') || '(no token)';
+        dbg.textContent = `Token: ${t}`;
+      }
+    }catch(e){}
+  }catch(e){}
+  // Kick off initial background refreshes for real-time counts
+  try {
+    loadDashboardStats();
+    loadUnansweredQueries();
+    if (!unansweredPollInterval) unansweredPollInterval = setInterval(() => { loadUnansweredQueries(); loadDashboardStats(); }, 10000);
+  } catch(e) { console.error('initial poll start error', e); }
+});
+
+// ensure sidebar menu buttons reliably open target sections
+try{
+  const bDash = document.getElementById('btn-dashboard');
+  const bQueries = document.getElementById('btn-queries');
+  const bStudents = document.getElementById('btn-students');
+  const bActions = document.getElementById('btn-actions');
+  if (bDash) bDash.addEventListener('click', () => showSection('dashboard'));
+  if (bQueries) bQueries.addEventListener('click', () => showSection('queries'));
+  if (bStudents) bStudents.addEventListener('click', () => showSection('students'));
+  if (bActions) bActions.addEventListener('click', () => showSection('actions'));
+}catch(e){ console.error('sidebar bind error', e) }
+
+// Load student login logs and display
+async function loadStudentLogins() {
+  try {
+  const res = await fetch('/api/admin/logins', { headers: getHeaders(false) });
+  let j = null; try { j = await res.json(); } catch(e) { j = { ok: false, logins: [] }; }
+    
+    const list = document.getElementById('history-list');
+    list.innerHTML = '';
+    if (j.ok && j.logins && j.logins.length) {
+      const table = document.createElement('table');
+      table.style.width = '100%';
+      const header = table.insertRow();
+      header.insertCell().outerHTML = '<th>Name</th>';
+      header.insertCell().outerHTML = '<th>Email</th>';
+      header.insertCell().outerHTML = '<th>Time</th>';
+      j.logins.forEach(r => {
+        const row = table.insertRow();
+        row.insertCell().textContent = r.name;
+        row.insertCell().textContent = r.email;
+        row.insertCell().textContent = r.time;
+      });
+      list.appendChild(table);
+    } else {
+      list.textContent = 'No student login records found.';
+    }
+  } catch (e) {
+    document.getElementById('history-list').textContent = 'Error: ' + e.message;
+  }
+}
+
+// note: 'Load Student Logins' button removed in favor of table view; keep function available if needed
+</script>
+
+</body>
+</html>

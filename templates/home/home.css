@@ -1,0 +1,91 @@
+/* Global layout reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  color: #333;
+}
+
+/* Unified container sizing */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  transition: 0.4s ease;
+}
+
+.hero:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.hero img {
+  width: 45%;
+  border-radius: 20px;
+  transition: 0.4s ease;
+}
+
+.hero img:hover {
+  transform: scale(1.03);
+}
+
+.hero .content {
+  width: 55%;
+}
+
+.btn-login {
+  display: inline-block;
+  margin-top: 20px;
+  background: #ff8fab;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.btn-login:hover {
+  transform: translateY(-4px);
+  background: #ff6b95;
+  box-shadow: 0 8px 20px rgba(255, 107, 149, 0.4);
+}
+
+/* Sections */
+.section {
+  margin-top: 50px;
+  background: rgba(255,255,255,0.3);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #222;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 40px;
+  background: rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+}
