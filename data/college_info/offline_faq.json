@@ -1,0 +1,182 @@
+
+{
+  "faqs": [
+    {
+      "keyword": "about college",
+      "keywords": ["about", "college", "mmec", "information", "details", "institute"],
+      "answer": "🏛️ <b>Maratha Mandal Engineering College (MMEC)</b><br><br>📍 <b>Location:</b> Halbhavi, Belagavi – 591113<br>🗓️ <b>Established:</b> 1997<br>🎓 <b>Affiliation:</b> VTU Belagavi<br>⚙️ <b>Approved by:</b> AICTE<br>🏢 <b>Managed by:</b> Maratha Mandal Trust (est. 1931)<br><br>⭐ MMEC offers value-based education, strong placements, modern labs, and a student-friendly campus.<br><br>🌐 Website: <a href=\"https://www.mmec.edu.in\" target=\"_blank\" rel=\"noopener\">www.mmec.edu.in</a>"
+    },
+     {
+      "keyword": "website",
+      "keywords": ["website", "college website", "web app","web application"],
+      "answer": "Visit <a href=\"https://www.mmec.edu.in\" target=\"_blank\" rel=\"noopener\">https://www.mmec.edu.in</a> "
+    },  
+
+    {
+      "keyword": "director",
+      "keywords": ["director", "college director"],
+      "answer": "👨‍💼 <b>College Director</b><br><br><b>Dr. D G Kulkarni</b><br>He provides strategic leadership and guides the institution’s growth."
+    },
+    {
+      "keyword": "principal",
+      "keywords": ["principal", "college principal", "head of college"],
+      "answer": "👨‍🏫 <b>Principal</b><br><br><b>Dr.Praveen Chitti </b><br>Responsible for academic operations, student development, and administration."
+    },
+    {
+      "keyword": ["vice principal", "assistant head"],
+      "answer": "👨‍🏫 <b>Vice Principal</b><br><br><b>Dr. Suresh Mashyal</b><br>Supports academics, discipline, and institutional planning."
+    },
+      {
+  "keyword": "cse",
+  "keywords": ["cse", "computer science", "computer science engineering", "cs branch"],
+  "answer": "💻 <b>Computer Science & Engineering (CSE)</b><br><br>• Focus on software development, algorithms, AI, databases & cybersecurity<br>• Learn programming, cloud, ML, web/app development<br>• Careers: Software Developer, Data Analyst, AI Engineer, Cloud Engineer, Full-Stack Developer"
+},
+{
+  "keyword": "ece",
+  "keywords": ["ece", "electronics", "electronics communication", "electronics engineering"],
+  "answer": "📡 <b>Electronics & Communication Engineering (ECE)</b><br><br>• Focus on circuits, communication systems, embedded systems, VLSI, IoT<br>• Learn microcontrollers, digital electronics, networking, signal processing<br>• Careers: Embedded Engineer, IoT Developer, Telecom Engineer, Hardware Engineer, VLSI Designer"
+},
+{
+  "keyword": "robotics",
+  "keywords": ["robotics", "ai", "r&ai", "robotics and ai", "artificial intelligence"],
+  "answer": "🤖 <b>Robotics & Artificial Intelligence (R&AI)</b><br><br>• Combines robotics, automation, ML, computer vision & sensors<br>• Learn ROS, AI model development, autonomous system design<br>• Careers: Robotics Engineer, AI Engineer, Automation Specialist, ML Engineer, Drone Systems Developer"
+},
+{
+  "keyword": "mechanical",
+  "keywords": ["mechanical", "mech", "mechanical engineering"],
+  "answer": "🔧 <b>Mechanical Engineering</b><br><br>• Focus on machines, thermodynamics, manufacturing, CAD/CAM, automotive systems<br>• Learn 3D modeling, materials engineering, production & thermal systems<br>• Careers: Design Engineer, Production Engineer, Automotive Engineer, Maintenance Engineer"
+},
+    {
+      "keyword": "hod cse",
+      "keywords": ["cse hod", "hod cse"],
+      "answer": "💻 <b>HOD – Computer Science & Engineering</b><br><br><b>Prof.Swati Patil</b><br>Guides the CSE department, research, and skill development."
+    },
+
+    {
+      "keyword": "hod ece",
+      "keywords": ["ece hod", "hod ece"],
+      "answer": "📡 <b>HOD – Electronics & Communication Engineering</b><br><br><b>Prof. Vaibhav Kakade</b><br>Expert in communication and embedded technologies."
+    },
+
+    {
+      "keyword": "hod mechanical",
+      "keywords": ["mechanical hod", "hod mechanical", "mech department"],
+      "answer": "⚙️ <b>HOD – Mechanical Engineering</b><br><br><b>Dr.Anand Mattikali</b><br>Specializes in industrial engineering and machine design."
+    },
+
+    {
+      "keyword": "hod robotics",
+      "keywords": ["robotics hod", "hod ai", "hod rai","hod robotics"],
+      "answer": "🤖 <b>HOD – Robotics & Artificial Intelligence</b><br><br><b>Dr. Shubha B. Baravani</b><br>Expert in robotics, automation, and AI research."
+    },
+
+    {
+      "keyword": "courses offered",
+      "keywords": ["courses", "programs","cse", "branches", "streams","department"],
+      "answer": "📚 <b>Courses Offered</b><br><br>💻 CSE – Computer Science & Engineering<br>🤖 R&AI – Robotics & Artificial Intelligence<br>📡 ECE – Electronics & Communication Engineering<br>⚙️ Mechanical Engineering"
+    },
+    {
+  "keyword": "cse strength",
+  "keywords": ["cse strength", "computer science strength", "cse intake", "cse students", "cse capacity"],
+  "answer": "📊 <b>CSE Department – Student Strength</b><br><br>• 1st Year: 96 students<br>• 2nd Year: 98 students<br>• 3rd Year: 96 students<br>• 4th Year: 94 students<br><br>📌 <b>Total Strength: 384 students</b>"
+},
+{
+  "keyword": "cse faculty",
+  "keywords": ["cse faculty", "computer science faculty", "cs teachers", "cse staff"],
+  "answer": "👩‍🏫 <b>CSE Department – Faculty Members</b><br><br>• Prof. Swati Patil<br>• Prof. Mahesh Marigeri<br>• Prof. H. Pujar<br>• Prof. M. T. Salunke<br>• Prof. S. N. Nandi<br>• Prof. Sushant Patil<br>• Prof. Rohit B<br>• Prof. Sonal Pawar<br>• Prof. Kanchan Patil"
+},
+    {
+      "keyword": "admissions",
+      "keywords": ["admission", "apply", "eligibility", "process"],
+      "questions": [
+        "what is the admission process",
+        "how to apply for mmec",
+        "admission process",
+        "how to get admission",
+        "admissions 2025",
+        "eligibility for admission"
+      ],
+      "answer": "📝 <b>Admissions & Admission Process</b><br><br>1) <b>Eligibility</b>: As per VTU & AICTE norms — 10+2 (Science) with required physics, chemistry & mathematics. Lateral entry available for diploma holders.<br><br>2) <b>Entrance / Selection</b>: Admissions are through state & national processes (KCET / COMEDK / DCET where applicable) and management quota as per institute rules. Merit based counselling/seat allotment follows the respective counselling authority.<br><br>3) <b>How to Apply</b>: Apply via the official portals (KCET/COMEDK) or the MMEC admission portal. For management quota, contact the admissions office directly.<br><br>4) <b>Documents Required</b>: 10th/12th marksheets, transfer & migration certificate, degree/diploma (for lateral entry), caste & income certificate (if applicable), Aadhaar, passport-size photos, and proof of entrance rank (if applicable).<br><br>5) <b>Fees & Payment</b>: Fees differ by quota — refer to the official fee schedule. Payments accepted via online banking, UPI or bank challan. For queries, call admissions helpline.<br><br>6) <b>Contact & Next Steps</b>: Visit <a href=\"https://www.mmec.edu.in/admissions\" target=\"_blank\" rel=\"noopener\">MMEC Admissions</a> or call the admissions office at <b>9353364643</b>. For step-by-step guidance, mention \"admission process\" and the campus team will assist you."
+    },
+    {
+      "keyword": "admission process",
+      "keywords": ["admission process", "how to apply", "steps to admission", "procedure for admission", "how to get admission"],
+      "questions": [
+        "what is the admission process",
+        "how to apply",
+        "steps for admission",
+        "procedure for admission",
+        "how to get admission in mmec"
+      ],
+      "answer": "📝 <b>Admission Process — Step by Step</b><br><br>• <b>Step 1 — Check Eligibility:</b> Ensure you meet the eligibility criteria (10+2 with PCM or relevant diploma for lateral entry).<br>• <b>Step 2 — Entrance/Registration:</b> Register/apply through the relevant counselling portal (KCET/COMEDK/DCET) or the MMEC admission portal for institute-level seats.<br>• <b>Step 3 — Document Verification:</b> Attend document verification with original certificates (10th, 12th, transfer/migration, Aadhaar, caste/income if applicable).<br>• <b>Step 4 — Seat Allotment & Payment:</b> On allotment, pay the fees as per your quota (merit/management) to confirm admission.<br>• <b>Step 5 — Reporting & Orientation:</b> Report to the college on the specified date for registration, orientation, and class commencement.<br><br>For any confusion, contact the Admissions Office at <b>9353364643</b> or visit <a href=\"https://www.mmec.edu.in/admissions\" target=\"_blank\" rel=\"noopener\">MMEC Admissions</a>."
+    },
+
+    {
+      "keyword": "fee structure",
+      "keywords": ["fee", "fees", "structure"],
+      "answer": "💰 <b>Fee Structure at MMEC</b><br><br>\n\n<b>A. Management Quota:</b><br>\n• 💻 CSE: ₹2,00,000/- per year<br>\n• 📡 ECE: ₹1,75,000/- per year<br>\n• 🤖 Robotics & AI (R&AI): ₹1,70,000/- per year<br>\n• ⚙️ Mechanical Engineering:<br>\n&nbsp;&nbsp;&nbsp;&nbsp;• 1st Year: ₹35,000/-<br>\n&nbsp;&nbsp;&nbsp;&nbsp;• 2nd Year Onwards: ₹55,000/- per year<br><br>\n<b>B. Merit Students:</b><br>\n• 🎓 All branches: ₹1,00,000/- per year<br><br>\n<b>C. Additional Fees:</b><br>\n<b>1. One-time Fees:</b><br>\n• 📝 Admission Form: ₹1,200/-<br>\n• 🎓 Alumni Association: ₹500/-<br><br>\n<b>2. Annual Fees:</b><br>\n• 🏛 Department Association: ₹500/-<br>\n• 🚌 Transportation: ₹12,000/- (₹6,000 by Management + ₹6,000 by Student)<br><br>\n<b>D. Hostel Facilities:</b><br>\n• 🏠 Accommodation: ₹40,000/- per year<br>\n• 🔐 Security Deposit: ₹10,000/- (Non-refundable)<br>\n• 🍽️ Mess Charges: ₹3,500 – ₹3,800 per month (depends on market rates)<br><br>\n<b>Important Notes:</b><br>\n• 📘 Admissions based on merit (MMEC Test / KEA)<br>\n• 🚫 No donations accepted<br>\n• 💳 Payments: Online Banking, UPI, Cash, DD<br>\n• ❌ Bank cheques not accepted<br><br>\n📞 For detailed fee structure: +91 9353364643"
+    },
+
+    {
+      "keyword": "student life",
+      "keywords": ["student life", "campus life", "clubs", "fest", "events", "activities"],
+      "answer": "🎓 Student Life at MMEC<br><br>• Technical Clubs: Coding, Robotics, Hackathons<br>• Cultural Events: Annual Fest “Ojas”, Dance & Music<br>• Social Service: NSS Activities & Community Outreach<br>• Sports: Indoor & Outdoor Facilities, Tournaments<br>• Growth: Workshops, Seminars & Guest Lectures<br><br>Visit <a href=\"https://www.mmec.edu.in\" target=\"_blank\" rel=\"noopener\">https://www.mmec.edu.in</a> for student clubs and event calendar."
+    },
+
+    {
+      "keyword": "scholarship",
+      "keywords": ["scholarship", "scholarships", "fee concession", "scholar", "minority", "government schemes"],
+      "answer": "🎓 <b>Scholarships at MMEC</b><br><br>✨ MMEC supports students with multiple Government & Institutional scholarship schemes:<br><br>• 🕌 <b>Minority Scholarship</b> (for eligible Muslim, Christian, Jain, Sikh, Buddhist students)<br>• 🎯 <b>Merit-Based Scholarships</b> (based on academic performance)<br>• 💼 <b>SC/ST & OBC Scholarships</b> under Government of Karnataka<br>• 📚 <b>Pragati Scholarship</b> for girl students (AICTE)<br>• 🤝 <b>Saksham Scholarship</b> for specially-abled students (AICTE)<br>• 🏅 <b>Fee Concession Schemes</b> for economically weaker students<br><br>📌 <b>Required documents usually include:</b><br>• Income certificate<br>• Aadhaar card<br>• SSLC/PUC/UG marks card<br>• Bank passbook<br>• Caste certificate (if applicable)<br><br>🌐 For detailed guidelines, visit: <a href=\"https://www.mmec.edu.in\" target=\"_blank\" rel=\"noopener\">www.mmec.edu.in</a><br>📞 For assistance: Contact the MMEC Scholarship Help Desk at <b>9353364643</b>."
+    },
+
+    {
+      "keyword": "management",
+      "keywords": ["management", "trust", "college management", "who runs mmec", "leadership"],
+      "answer": "🏢 <b>College Management</b><br><br>MMEC is managed by the <b>Maratha Mandal Trust</b>, a well-established trust running many institutions in Belagavi. The leadership includes the Director, Principal, Vice-Principal and Heads of Departments.<br><br>For more about our governance and management team, visit the official site: <a href=\"https://www.mmec.edu.in\" target=\"_blank\">MMEC Management Info</a>."
+    },
+
+    {
+      "keyword": "hostel",
+      "keywords": ["hostel", "accommodation", "rooms", "mess"],
+      "answer": "🏠 <b>Hostel Facilities</b><br><br>• Separate boys & girls hostels<br>• 24×7 security & CCTV<br>• Hot water & clean rooms<br>• Healthy mess food<br>• Study-friendly environment<br><br>📞 Hostel Office: 9353364643"
+    },
+
+    {
+      "keyword": "placements",
+      "keywords": ["placement", "placements", "companies"],
+      "answer": "💼 <b>Placements</b><br><br>• Regular training & aptitude sessions<br>• Companies: Infosys, TCS, Wipro, Tech Mahindra, Bosch, etc.<br>• Average Package: ₹4.5 LPA<br>• Highest Package: ₹12 LPA"
+    },
+    
+
+    {
+      "keyword": "facilities",
+      "keywords": ["facilities", "library", "wifi", "labs", "sports"],
+      "answer": "🏫 <b>Campus Facilities</b><br><br>📚 Digital Library<br>🧪 Modern Labs<br>📶 High-speed WiFi<br>🚌 College Bus<br>🍽️ Canteen<br>🏠 Separate Hostels<br>⚽ Sports facilities<br>🛡️ 24×7 Security"
+    },
+
+    {
+      "keyword": "contact",
+      "keywords": ["contact", "contact detail","address", "phone", "email"],
+      "answer": "📍 <b>Contact MMEC</b><br><br>🏛️ Halbhavi, Belagavi<br>📞 9353364643<br>✉ <a href=\"mailto:info@mmec.edu.in\">info@mmec.edu.in</a>"
+    },
+
+    {
+      "keyword": "greeting",
+      "keywords": ["hi", "hello", "hey", "good morning", "good afternoon"],
+      "answer": "👋 Hello! How can I help you with MMEC today?"
+    },
+
+    {
+      "keyword": "thanks",
+      "keywords": ["thanks", "thank you", "bye"],
+      "answer": "😊 You're welcome! Feel free to ask anything about MMEC."
+    },
+
+    {
+      "keyword": "general",
+      "keywords": ["help", "support", "info", "information"],
+      "answer": "🙋 I'm here to help you with admissions, courses, hostel, placements, fees, and all MMEC-related queries."
+    }
+
+  ]
+}
