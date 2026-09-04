@@ -59,8 +59,8 @@ The repository includes the following images inside `assets/`. All images are vi
 ### Bot & UI Assets
 - **`bot.jpeg`** — Chatbot avatar used in the chat interface (recommended: square format)
 - **`welcome.jpg`** — Welcome/splash screen shown on app startup
-- **`logo.jpg`** — College/project logo (appears in headers and branding)
-- **`photo.jpeg`** — Sample photo used throughout the UI
+
+
 
 ### User Interface Pages
 - **`home page.jpg`** — Home page/splash screen screenshot
