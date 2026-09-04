@@ -88,8 +88,7 @@ The repository includes the following images inside `assets/`. All images are vi
 <p align="center">
   <img src="assets/welcome.jpg" alt="Welcome Screen" width="400" style="margin:15px;" />
   <img src="assets/chat.jpg" alt="Chat UI" width="400" style="margin:15px;" />
-  <img src="assets/logo.jpg" alt="College Logo" width="400" style="margin:15px;" />
-  <img src="assets/bot.jpeg" alt="Bot avatar" width="400" style="margin:15px;" />
+  
 </p>
 
 ### Student Interface
